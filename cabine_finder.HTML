@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Installatie Locaties</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Zoek een installatie</h2>
+  <input type="text" id="zoekbalk" placeholder="Typ een installatienaam..." list="installaties">
+  <button onclick="zoekInstallatie()">Ga naar locatie</button>
+
+  <datalist id="installaties">
+    <option value="Installatie A">
+    <option value="Installatie B">
+    <option value="Installatie C">
+  </datalist>
+
+  <div id="result"></div>
+
+  <script>
+    const locaties = {
+      "Installatie A": "https://www.google.com/maps?q=Janstraat+12,+Brussel",
+      "Installatie B": "https://www.google.com/maps?q=Kerklaan+5,+Antwerpen",
+      "Installatie C": "https://www.google.com/maps?q=Markt+1,+Gent"
+    };
+
+    function zoekInstallatie() {
+      const naam = document.getElementById("zoekbalk").value;
+      const url = locaties[naam];
+
+      if (url) {
+        window.open(url, "_blank"); // Open in nieuw tabblad
+      } else {
+        document.getElementById("result").innerText = "Installatie niet gevonden.";
+      }
+    }
+  </script>
+
+</body>
+</html>
